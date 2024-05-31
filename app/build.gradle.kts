@@ -1,3 +1,5 @@
+import java.util.*
+
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.jetbrains.kotlin.android)
@@ -18,11 +20,16 @@ android {
 		vectorDrawables {
 			useSupportLibrary = true
 		}
+
+		val properties = Properties().apply {
+			load(project.rootProject.file("local.properties").reader())
+		}
+		buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
 	}
 
 	buildTypes {
 		release {
-			isMinifyEnabled = false
+			isMinifyEnabled = true
 			proguardFiles(
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
@@ -38,6 +45,7 @@ android {
 	}
 	buildFeatures {
 		compose = true
+		buildConfig = true
 	}
 	composeOptions {
 		kotlinCompilerExtensionVersion = "1.5.1"

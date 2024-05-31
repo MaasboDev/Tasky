@@ -67,8 +67,13 @@ dependencies {
 	implementation(libs.androidx.ui.tooling.preview)
 	implementation(libs.androidx.material3)
 
+	// Hilt
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
+
+	// Retrofit
+	implementation(libs.retrofit)
+	implementation(libs.moshi)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

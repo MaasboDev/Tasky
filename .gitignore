@@ -43,3 +43,4 @@ captures/
 .idea/
 # Cache of project
 .gradletasknamecache
+/Tasky_resources/

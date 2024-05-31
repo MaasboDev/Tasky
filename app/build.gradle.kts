@@ -1,4 +1,4 @@
-import java.util.*
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
 	alias(libs.plugins.android.application)
@@ -21,18 +21,15 @@ android {
 			useSupportLibrary = true
 		}
 
-		val properties = Properties().apply {
-			load(project.rootProject.file("local.properties").reader())
-		}
-		buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
+		val apiKey = gradleLocalProperties(rootDir, providers).getProperty("API_KEY")
+		buildConfigField("String", "API_KEY", "\"$apiKey\"")
 	}
 
 	buildTypes {
 		release {
 			isMinifyEnabled = true
 			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard-rules.pro"
+				getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
 			)
 		}
 	}

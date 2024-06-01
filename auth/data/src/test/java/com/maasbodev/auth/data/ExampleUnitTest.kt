@@ -1,4 +1,4 @@
-package com.maasbodev.tasky
+package com.maasbodev.auth.data
 
 import org.junit.Test
 

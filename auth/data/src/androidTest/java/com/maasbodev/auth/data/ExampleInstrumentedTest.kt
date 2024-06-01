@@ -1,4 +1,4 @@
-package com.maasbodev.tasky
+package com.maasbodev.auth.data
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
 	fun useAppContext() {
 		// Context of the app under test.
 		val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-		assertEquals("com.maasbodev.tasky", appContext.packageName)
+		assertEquals("com.maasbodev.auth.data.test", appContext.packageName)
 	}
 }

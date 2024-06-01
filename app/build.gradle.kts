@@ -5,6 +5,7 @@ plugins {
 	alias(libs.plugins.jetbrains.kotlin.android)
 	alias(libs.plugins.org.jetbrains.kotlin.kapt)
 	alias(libs.plugins.hilt.plugin)
+	alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -47,7 +48,7 @@ android {
 		buildConfig = true
 	}
 	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.1"
+		kotlinCompilerExtensionVersion = "1.5.10"
 	}
 	packaging {
 		resources {
@@ -71,9 +72,9 @@ dependencies {
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
 
-	// Retrofit
-	implementation(libs.retrofit)
-	implementation(libs.moshi)
+	// Navigation
+	implementation(libs.navigation.compose)
+	implementation(libs.kotlinx.serialization.json)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

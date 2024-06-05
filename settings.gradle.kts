@@ -20,4 +20,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Tasky"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
+include(":auth:data")
+include(":auth:domain")
+include(":core:data")
+include(":core:domain")
+include(":core:presentation:designsystem")
+include(":auth:presentation")

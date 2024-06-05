@@ -3,6 +3,10 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.jetbrains.kotlin.android)
+	alias(libs.plugins.org.jetbrains.kotlin.kapt)
+	alias(libs.plugins.hilt.plugin)
+	alias(libs.plugins.kotlin.serialization)
+	alias(libs.plugins.ksp.devtools)
 }
 
 android {
@@ -55,6 +59,13 @@ android {
 }
 
 dependencies {
+	implementation(projects.core.data)
+	implementation(projects.core.domain)
+	//implementation(projects.core.presentation)
+
+	implementation(projects.auth.data)
+	implementation(projects.auth.domain)
+	implementation(projects.auth.presentation)
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -64,6 +75,15 @@ dependencies {
 	implementation(libs.androidx.ui.graphics)
 	implementation(libs.androidx.ui.tooling.preview)
 	implementation(libs.androidx.material3)
+
+	// Hilt
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.compiler)
+
+	// Navigation
+	implementation(libs.navigation.compose)
+	implementation(libs.kotlinx.serialization.json)
+
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)
@@ -71,4 +91,9 @@ dependencies {
 	androidTestImplementation(libs.androidx.ui.test.junit4)
 	debugImplementation(libs.androidx.ui.tooling)
 	debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+// Allow references to generated code
+kapt {
+	correctErrorTypes = true
 }

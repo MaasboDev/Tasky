@@ -6,6 +6,7 @@ plugins {
 	alias(libs.plugins.org.jetbrains.kotlin.kapt)
 	alias(libs.plugins.hilt.plugin)
 	alias(libs.plugins.kotlin.serialization)
+	alias(libs.plugins.ksp.devtools)
 }
 
 android {
@@ -48,7 +49,7 @@ android {
 		buildConfig = true
 	}
 	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.10"
+		kotlinCompilerExtensionVersion = "1.5.1"
 	}
 	packaging {
 		resources {
@@ -58,6 +59,13 @@ android {
 }
 
 dependencies {
+	implementation(projects.core.data)
+	implementation(projects.core.domain)
+	//implementation(projects.core.presentation)
+
+	implementation(projects.auth.data)
+	implementation(projects.auth.domain)
+	implementation(projects.auth.presentation)
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -70,7 +78,7 @@ dependencies {
 
 	// Hilt
 	implementation(libs.hilt.android)
-	kapt(libs.hilt.compiler)
+	ksp(libs.hilt.compiler)
 
 	// Navigation
 	implementation(libs.navigation.compose)

@@ -1,5 +1,5 @@
 plugins {
-	alias(libs.plugins.android.application)
+	alias(libs.plugins.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
 }
 
@@ -8,21 +8,17 @@ android {
 	compileSdk = 34
 
 	defaultConfig {
-		applicationId = "com.maasbodev.auth.presentation"
 		minSdk = 24
-		targetSdk = 34
-		versionCode = 1
-		versionName = "1.0"
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		consumerProguardFiles("consumer-rules.pro")
 	}
 
 	buildTypes {
 		release {
 			isMinifyEnabled = false
 			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard-rules.pro"
+				getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
 			)
 		}
 	}
@@ -30,23 +26,29 @@ android {
 		sourceCompatibility = JavaVersion.VERSION_1_8
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
-	buildFeatures {
-		compose = true
-	}
 	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.10"
+		kotlinCompilerExtensionVersion = "1.5.1"
 	}
 	kotlinOptions {
 		jvmTarget = "1.8"
 	}
+	buildFeatures {
+		compose = true
+	}
 }
 
 dependencies {
+	implementation(projects.core.domain)
+	implementation(projects.auth.domain)
+	implementation(projects.core.presentation.designsystem)
 
 	implementation(libs.androidx.core.ktx)
-	implementation(libs.androidx.activity.compose)
 	implementation(libs.androidx.appcompat)
-	implementation(libs.material)
+	implementation(platform(libs.androidx.compose.bom))
+	implementation(libs.androidx.ui)
+	implementation(libs.androidx.ui.graphics)
+	implementation(libs.androidx.ui.tooling.preview)
+	implementation(libs.androidx.material3)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

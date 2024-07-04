@@ -1,4 +1,4 @@
-package com.maasbodev.tasky
+package com.maasbodev.tasky.navigation
 
 import kotlinx.serialization.Serializable
 

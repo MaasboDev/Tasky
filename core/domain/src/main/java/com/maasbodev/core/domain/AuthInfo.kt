@@ -1,3 +1,7 @@
 package com.maasbodev.core.domain
 
-class AuthInfo {}
+class AuthInfo(
+	val accessToken: String,
+	val refreshToken: String,
+	val userId: String,
+)

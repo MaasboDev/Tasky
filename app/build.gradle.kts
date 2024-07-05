@@ -61,7 +61,6 @@ android {
 dependencies {
 	implementation(projects.core.data)
 	implementation(projects.core.domain)
-	//implementation(projects.core.presentation)
 
 	implementation(projects.auth.data)
 	implementation(projects.auth.domain)
@@ -75,6 +74,9 @@ dependencies {
 	implementation(libs.androidx.ui.graphics)
 	implementation(libs.androidx.ui.tooling.preview)
 	implementation(libs.androidx.material3)
+
+	// Splash screen
+	implementation(libs.androidx.core.splashscreen)
 
 	// Hilt
 	implementation(libs.hilt.android)

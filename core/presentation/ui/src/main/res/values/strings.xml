@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_bad_request">Bad Request.</string>
+    <string name="error_conflict">That email already exists.</string>
+    <string name="error_unauthorized">You must login to perform this operation.</string>
+    <string name="error_unknown">An unknown error occurred.</string>
+</resources>

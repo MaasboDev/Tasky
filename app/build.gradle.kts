@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.jetbrains.kotlin.android)
@@ -24,9 +22,6 @@ android {
 		vectorDrawables {
 			useSupportLibrary = true
 		}
-
-		val apiKey = gradleLocalProperties(rootDir, providers).getProperty("API_KEY")
-		buildConfigField("String", "API_KEY", "\"$apiKey\"")
 	}
 
 	buildTypes {
@@ -61,6 +56,7 @@ android {
 dependencies {
 	implementation(projects.core.data)
 	implementation(projects.core.domain)
+	implementation(projects.core.presentation.designsystem)
 
 	implementation(projects.auth.data)
 	implementation(projects.auth.domain)

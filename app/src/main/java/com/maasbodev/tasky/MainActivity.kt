@@ -10,12 +10,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.maasbodev.auth.presentation.register.RegisterScreen
-import com.maasbodev.tasky.navigation.Register
-import com.maasbodev.tasky.ui.theme.TaskyTheme
+import com.maasbodev.core.presentation.designsystem.TaskyTheme
+import com.maasbodev.tasky.navigation.NavigationRoot
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,12 +35,10 @@ class MainActivity : ComponentActivity() {
 				) {
 					if (!viewModel.state.isCheckingAuth) {
 						val navController = rememberNavController()
-						NavHost(
+						NavigationRoot(
 							navController = navController,
-							startDestination = Register
-						) {
-							composable<Register> { RegisterScreen() }
-						}
+							isLoggedIn = viewModel.state.isLoggedIn
+						)
 					}
 				}
 			}

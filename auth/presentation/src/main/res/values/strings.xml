@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_your_account">Create your account</string>
+    <string name="email_address">Email address</string>
+    <string name="error_email_password_incorrect">The email or password is incorrect.</string>
+    <string name="log_in">Log In</string>
+    <string name="password">Password</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="youre_logged_in">You\'re logged in.</string>
+</resources>

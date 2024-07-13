@@ -1,11 +1,10 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
-	alias(libs.plugins.ksp.devtools)
 }
 
 android {
-	namespace = "com.maasbodev.auth.presentation"
+	namespace = "com.maasbodev.core.presentation.ui"
 	compileSdk = 34
 
 	defaultConfig {
@@ -19,7 +18,8 @@ android {
 		release {
 			isMinifyEnabled = false
 			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+				getDefaultProguardFile("proguard-android-optimize.txt"),
+				"proguard-rules.pro"
 			)
 		}
 	}
@@ -27,38 +27,28 @@ android {
 		sourceCompatibility = JavaVersion.VERSION_1_8
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
-	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.1"
-	}
 	kotlinOptions {
 		jvmTarget = "1.8"
 	}
 	buildFeatures {
 		compose = true
+		buildConfig = true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion = "1.5.1"
 	}
 }
 
 dependencies {
+
 	implementation(projects.core.domain)
-	implementation(projects.core.domain)
-	implementation(projects.auth.domain)
-	implementation(projects.core.presentation.designsystem)
-	implementation(projects.core.presentation.ui)
 
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.appcompat)
 	implementation(platform(libs.androidx.compose.bom))
-	implementation(libs.androidx.lifecycle.viewmodel.ktx)
+	implementation(libs.androidx.lifecycle.runtime.ktx)
 	implementation(libs.androidx.ui)
-	implementation(libs.androidx.ui.graphics)
-	implementation(libs.androidx.ui.tooling.preview)
-	implementation(libs.androidx.material.icons.extended)
-	implementation(libs.androidx.material3)
-
-	// Hilt
-	implementation(libs.hilt.android)
-	ksp(libs.hilt.compiler)
-	implementation(libs.hilt.navigation.compose)
+	implementation(libs.material)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

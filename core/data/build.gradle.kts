@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.jetbrains.kotlin.android)
@@ -14,6 +16,15 @@ android {
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
+
+		val apiKey = gradleLocalProperties(rootDir, providers).getProperty("API_KEY")
+		buildConfigField("String", "API_KEY", "\"$apiKey\"")
+		val baseUrl = gradleLocalProperties(rootDir, providers).getProperty("BASE_URL")
+		buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+	}
+
+	buildFeatures {
+		buildConfig = true
 	}
 
 	buildTypes {
@@ -40,6 +51,15 @@ dependencies {
 	implementation(libs.androidx.appcompat)
 	implementation(libs.kotlinx.serialization.json)
 	implementation(libs.material)
+	implementation(libs.timber)
+
+	// Ktor
+	implementation(libs.ktor.client.auth)
+	implementation(libs.ktor.client.cio)
+	implementation(libs.ktor.client.content.negotiation)
+	implementation(libs.ktor.client.core)
+	implementation(libs.ktor.client.logging)
+	implementation(libs.ktor.serialization.kotlinx.json)
 
 	// Hilt
 	implementation(libs.hilt.android)
